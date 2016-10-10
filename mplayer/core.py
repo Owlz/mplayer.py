@@ -276,7 +276,7 @@ class Player(object):
                                 bufsize=-1, stdout=subprocess.PIPE)
         for line in proc.stdout:
             # skip version string at end of mplayer2 output
-            if line.startswith("MPlayer"):
+            if line.startswith(b"MPlayer"):
                 continue
             args = line.decode('utf-8', 'ignore').split()
             if not args:
