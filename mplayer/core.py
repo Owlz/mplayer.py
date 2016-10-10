@@ -314,12 +314,14 @@ class Player(object):
         """Spawn the underlying MPlayer process."""
         if self.is_alive():
             return
+        # TODO: This changed in python 3.5. Likely there is a more correct way of getting this
+        mswindows = subprocess.mswindows if hasattr(subprocess,"mswindows") else subprocess._mswindows
         args = [self.exec_path]
         args.extend(self._args)
         # Start the MPlayer process (unbuffered)
         self._proc = subprocess.Popen(args, stdin=subprocess.PIPE,
             stdout=self._stdout._handle, stderr=self._stderr._handle,
-            close_fds=(not subprocess.mswindows))
+            close_fds=(not mswindows))
         if self._proc.stdout is not None:
             self._stdout._attach(self._proc.stdout)
         if self._proc.stderr is not None:
