@@ -7,7 +7,7 @@ from mplayer import __version__
 
 setup(
     name='mplayer.py',
-    version=__version__,
+    version='0.7.1a',
     description='Lightweight and dynamic MPlayer wrapper with a Pythonic API',
     author='Darwin M. Bautista',
     author_email='djclue917@gmail.com',
